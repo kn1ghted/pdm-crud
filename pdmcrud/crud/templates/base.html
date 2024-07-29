@@ -1,5 +1,8 @@
-{% load static %}
 <!doctype html>
+<!-- Base template -->
+<!-- Bootstrap 5 added via CDN -->
+ <!-- Header, main and footer sections in base structure -->
+{% load static %}
 <html lang="en">
     <head>
         <title>{% block title %} {% endblock %}</title>
@@ -24,8 +27,9 @@
             <!-- place navbar here -->
              <nav class="navbar navbar-expand navbar-light bg-light">
                 <div class="nav navbar-nav">
-                    <a class="nav-item nav-link active" href="/" aria-current="page">Home <span class="visually-hidden">(current)</span></a>
-                    <a class="nav-item nav-link" href="/about">About</a>
+                    <a class="nav-item nav-link active" href="{% url 'index' %}" aria-current="page">Home <span class="visually-hidden">(current)</span></a>
+                    <a class="nav-item nav-link active" href="{% url 'users' %}" aria-current="page">Users</a>
+                    <a class="nav-item nav-link active" href="{% url 'about' %}" aria-current="page">About</a>
                 </div>
              </nav>
              
@@ -40,7 +44,12 @@
             </div>
         </main>
         <footer>
-            <!-- place footer here -->
+            <div class="text-center">
+                <h3>PDM CRUD</h3>
+                <p>Python - Django - MySQL</p>
+                <p>Visit my github page</p>
+            </div>
+            
         </footer>
         <!-- Bootstrap JavaScript Libraries -->
         <script

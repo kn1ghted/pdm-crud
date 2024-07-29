@@ -3,7 +3,10 @@ from django.http import HttpResponse
 # Create your views here.
 
 def index(request):
-    return HttpResponse("<h1>PDM CRUD home</h1>")
+    return render(request,'pages/index.html')
+
+def users(request):
+    return render(request,'users/index.html')
 
 def about(request):
     return render(request,'pages/about.html')
