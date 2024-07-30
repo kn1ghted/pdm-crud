@@ -3,6 +3,17 @@
 {% block title %} PDM CRUD - Edit Users {% endblock %}
 
 {% block content %}
-    <h1>Users</h1>
-    <p>Edit existing users</p>
+
+<div class="card">
+    <div class="card-header">
+        <h2>Edit existing users</h2>
+    </div>
+    <div class="card-body">
+        <h3 class="card-title">User details</h3>
+        {% include 'users/form.html' %}
+    </div>
+    <div class="card-footer text-muted">
+
+    </div>
+</div>
 {% endblock %}
