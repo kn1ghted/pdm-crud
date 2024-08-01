@@ -22,16 +22,18 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <tr class="">
-                            <td scope="row">01</td>
-                            <td>root</td>
-                            <td>Edwin Calderón</td>
-                            <td>Administrator</td>
+                        {% for user in users %}
+                        <tr class="user-row">
+                            <td scope="row">{{ user.id }}</td>
+                            <td>{{ user.username }}</td>
+                            <td>{{ user.first_name}} {{ user.last_name }}</td>
+                            <td>{{ user.role }}</td>
                             <td>
                                 <a name="action-button" id="edit-button" class="btn btn-info" href="{% url 'users_edit' %}" role="button" >Edit</a>
                                 <a name="action-button" id="delete-button" class="btn btn-warning" href="#" role="button" >Delete</a>
                             </td>
                         </tr>
+                        {% endfor %}
                     </tbody>
                 </table>
             </div>
