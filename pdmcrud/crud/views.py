@@ -1,5 +1,7 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from django.http import HttpResponse
+from .forms import UserForm
+
 # Import models
 from .models import User
 
@@ -16,7 +18,13 @@ def users(request):
     return render(request,'users/index.html', {'users':users})
 
 def users_create(request):
-    return render(request,'users/create.html')
+    # POST http request and FILES for images
+    form = UserForm(request.POST or None, request.FILES or None)
+    # if form is valid, save details and redirect to users index page
+    if form.is_valid():
+        form.save()
+        return redirect('users')
+    return render(request,'users/create.html', {'form':form})
 
 def users_edit(request):
     return render(request,'users/edit.html')

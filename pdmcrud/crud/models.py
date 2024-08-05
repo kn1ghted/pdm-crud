@@ -12,7 +12,7 @@ class User(models.Model):
     username = models.CharField(max_length=50, verbose_name='Username')
     password = models.CharField(max_length=255, verbose_name='Password')
     role = models.CharField(max_length=50, choices=Roles.choices, default=Roles.READER, verbose_name='Role')
-    profile_picture = models.ImageField(upload_to='images/users/', null=True),
+    profile_picture = models.ImageField(upload_to='images/users/', verbose_name='Profile Picture', null=True),
     first_name = models.CharField(max_length=50, verbose_name='First Name')
     last_name = models.CharField(max_length=50, verbose_name='Last Name')
     email = models.CharField(max_length=100, verbose_name='Email')

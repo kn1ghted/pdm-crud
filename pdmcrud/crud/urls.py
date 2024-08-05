@@ -1,6 +1,8 @@
 from django.urls import path
+
 # Import application views
 from . import views
+
 # Import application settings
 from django.conf import settings
 from django.contrib.staticfiles.urls import static
