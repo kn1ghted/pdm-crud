@@ -29,6 +29,11 @@ def users_create(request):
 def users_edit(request):
     return render(request,'users/edit.html')
 
+def users_delete(request, id):
+    user = User.objects.get(id=id)
+    user.delete()
+    return redirect('users')
+
 # ABOUT view
 def about(request):
     return render(request,'pages/about.html')

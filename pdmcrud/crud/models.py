@@ -1,4 +1,5 @@
 from django.db import models
+from django.shortcuts import redirect
 
 # Create your models here.
 class User(models.Model):
@@ -23,6 +24,6 @@ class User(models.Model):
         return self.username
     
     # Delete profile pictures stored for users in images/users/
-    def delete(self, using=None, keep_parents=False):
-        self.profile_picture.storage.delete(self.profile_picture.name)
-        super.delete()
+    # def delete(self, using=None, keep_parents=False):
+    #     self.profile_picture.storage.delete(self.profile_picture.name)
+    #     super.delete()
