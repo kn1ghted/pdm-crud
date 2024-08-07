@@ -26,8 +26,14 @@ def users_create(request):
         return redirect('users')
     return render(request,'users/create.html', {'form':form})
 
-def users_edit(request):
-    return render(request,'users/edit.html')
+def users_edit(request, id):
+    user = User.objects.get(id=id)
+    form = UserForm(request.POST or None, request.FILES or None, instance=user)
+    # if form is valid, save details and redirect to users index page
+    if form.is_valid() and request.POST :
+        form.save()
+        return redirect('users')
+    return render(request,'users/edit.html', {'form':form})
 
 def users_delete(request, id):
     user = User.objects.get(id=id)

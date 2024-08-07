@@ -1,13 +1,14 @@
 <form class="row g-3 needs-validation" enctype="multipart/form-data" method="post" novalidate>
     {% csrf_token %}
     {% for field in form %}
-    <div class="mb-3">
+    <div class="mb-3 col-6">
         <label for="" class="form-label">{{ field.label }}:</label>
-        <input type="{{ field.field.widget.input_type }}" class="form-control" name="{{ field.name }}" id="" aria-describedby="helpId" placeholder="{{ field.label }}"> 
+        <input type="{{ field.field.widget.input_type }}" class="form-control" name="{{ field.name }}" id="" aria-describedby="helpId" placeholder="{{ field.label }}" value="{{ field.value | default:'' }}"> 
         <div class="help-text form-text">
             {{ field.errors }}
         </div>
     </div>
     {% endfor %}
-    <input name="" id="" class="btn btn-success" type="submit" value="Save details" />
+    <input name="" id="userSubmit" class="btn btn-success" type="submit" value="Save details" />
+    <a name="" id="" class="btn btn-primary" href="{% url 'users' %}" role="button" >Cancel</a>   
 </form>
