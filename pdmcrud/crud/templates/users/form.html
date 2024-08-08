@@ -1,14 +1,49 @@
 <form class="row g-3 needs-validation" enctype="multipart/form-data" method="post" novalidate>
     {% csrf_token %}
     {% for field in form %}
-    <div class="mb-3 col-6">
-        <label for="" class="form-label">{{ field.label }}:</label>
-        <input type="{{ field.field.widget.input_type }}" class="form-control" name="{{ field.name }}" id="" aria-describedby="helpId" placeholder="{{ field.label }}" value="{{ field.value | default:'' }}"> 
-        <div class="help-text form-text">
-            {{ field.errors }}
+        {% if field.label == 'Username' %}
+        <div class="mb-3 col-6">
+            <label for="input_user_id" class="form-label">{{ field.label }}:</label>
+            <div class="input-group mb-3">
+                <span class="input-group-text" id="basic-addon1">@</span>
+                <input type="{{ field.field.widget.input_type }}" class="form-control" name="{{ field.name }}" id="input_user_id" aria-describedby="helpId" placeholder="{{ field.label }}" value="{{ field.value | default:'' }}">
+            </div>
+            <div class="help-text form-text">
+                {{ field.errors }}
+            </div>
         </div>
-    </div>
+        {% elif field.label == 'Role' %}
+        <div class="mb-3 col-6">
+            <label for="select_user_role" class="form-label">{{ field.label }}:</label>
+            <select id="select_user_role" class="form-select" name="{{ field.name }}" aria-describedby="helpId" value="{{ field.value | default:'' }}">
+                <option value="administrator">Administrator</option>
+                <option value="editor">Editor</option>
+                <option value="reader">Reader</option>
+            </select>
+            <div class="help-text form-text">
+                {{ field.errors }}
+            </div>
+        </div>
+        {% elif field.label == 'Address' %}
+        <div class="mb-3 col-12">
+            <label for="textarea_user_address" class="form-label">{{ field.label }}:</label>
+            <textarea class="form-control" id="textarea_user_address" name="{{ field.name }}" aria-describedby="helpId" placeholder="{{ field.label }}" value="{{ field.value | default:'' }}" rows="3">
+                {{ field.value }}
+            </textarea>
+            <div class="help-text form-text">
+                {{ field.errors }}
+            </div>
+        </div>
+        {% else %}
+        <div class="mb-3 col-6">
+            <label for="" class="form-label">{{ field.label }}:</label>
+            <input type="{{ field.field.widget.input_type }}" class="form-control" name="{{ field.name }}" id="" aria-describedby="helpId" placeholder="{{ field.label }}" value="{{ field.value | default:'' }}"> 
+            <div class="help-text form-text">
+                {{ field.errors }}
+            </div>
+        </div>
+        {% endif %}
     {% endfor %}
-    <input name="" id="userSubmit" class="btn btn-success" type="submit" value="Save details" />
-    <a name="" id="" class="btn btn-primary" href="{% url 'users' %}" role="button" >Cancel</a>   
+    <input name="submit" id="userSubmit" class="btn btn-success my-1 col-4" type="submit" value="Save details" />
+    <a name="cancel" id="userCancel" class="btn btn-primary my-1 col-4" href="{% url 'users' %}" role="button" >Cancel</a>   
 </form>
